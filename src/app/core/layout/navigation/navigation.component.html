@@ -8,8 +8,15 @@
     [mode]="isSmall ? 'over' : 'side'"
     [opened]="isSmall === false"
   >
-    <mat-toolbar>Menu</mat-toolbar>
-    <app-sidebar-menu />
+    <mat-toolbar>
+      @if(!isSmall){
+
+      <app-sidenav-menu />
+
+      }@else { Menu }
+    </mat-toolbar>
+
+    <app-sidenav-actions (linkRouted)="closeSidenav()" />
   </mat-sidenav>
   <mat-sidenav-content class="sidenav-container">
     <mat-toolbar color="primary">

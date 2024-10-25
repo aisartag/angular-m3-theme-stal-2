@@ -1,13 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { APP_ENV } from './app.env';
-import { ThemingComponent } from './theming/theming.component';
+
 import { NavigationComponent } from './core/layout/navigation/navigation.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ThemingComponent, NavigationComponent],
+  imports: [RouterOutlet, NavigationComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

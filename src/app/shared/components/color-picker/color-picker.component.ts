@@ -9,8 +9,8 @@ import {
   applyTheme,
 } from '@material/material-color-utilities';
 
-const FALLBACK_COLOR = '#6750a4';
-//const FALLBACK_COLOR = '#005cbb';
+// const FALLBACK_COLOR = '#6750a4';
+const FALLBACK_COLOR = '#ff0000';
 
 @Component({
   selector: 'app-color-picker',

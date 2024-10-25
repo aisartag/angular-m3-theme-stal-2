@@ -4,6 +4,7 @@ import { environment } from '../environments/environment';
 interface AppEnv {
   name: string;
   version: string;
+  themeSeed: string;
 }
 
 export const APP_ENV = new InjectionToken<AppEnv>('app.env');
