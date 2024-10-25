@@ -1,0 +1,44 @@
+.grid-inverse {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  // row-gap: 0.2rem;
+  column-gap: 0.5rem;
+
+  .items-pad {
+    padding: 0.5rem;
+  }
+
+  .item-inverse-surface {
+    // border: 1px solid;
+    grid-column: 1 / -1;
+    background-color: var(--sys-inverse-surface);
+    color: var(--sys-inverse-on-surface);
+  }
+
+  .item-inverse-on-surface {
+    // border: 1px solid;
+    grid-column: 1 / -1;
+    background-color: var(--sys-inverse-on-surface);
+    color: var(--sys-inverse-surface);
+  }
+
+  .item-inverse-primary {
+    // border: 1px solid;
+    grid-column: 1 / -1;
+    background-color: var(--sys-inverse-primary);
+    color: var(--sys-on-surface);
+  }
+
+  .item-scrim {
+    // border: 1px solid;
+    background-color: var(--sys-scrim);
+    color: white;
+  }
+
+  .item-shadow {
+    // border: 1px solid;
+    background-color: var(--sys-shadow);
+    color: white;
+  }
+}

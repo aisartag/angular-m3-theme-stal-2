@@ -1,1 +1,92 @@
-/* You can add global styles to this file, and also import other style files */
+@use "@angular/material" as mat;
+
+//@use "./app/theming/carousel-theme" as carousel;
+@use "./app-theme" as app-theme;
+
+@include mat.core();
+
+// azure  #005cbb
+// blue   #343dff
+$light-theme: mat.define-theme(
+  (
+    color: (
+      theme-type: light,
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette,
+
+      use-system-variables: true,
+    ),
+    typography: (
+      use-system-variables: true,
+    ),
+    density: (
+      scale: 0,
+    ),
+  )
+);
+
+// magenta  #a900a9
+// violet   #7d00fa
+
+$dark-theme: mat.define-theme(
+  (
+    color: (
+      theme-type: dark,
+      primary: mat.$magenta-palette,
+      tertiary: mat.$violet-palette,
+
+      use-system-variables: true,
+    ),
+    typography: (
+      use-system-variables: true,
+    ),
+  )
+);
+
+:root {
+  @include mat.all-component-themes($light-theme);
+
+  @include mat.typography-hierarchy($light-theme);
+
+  @include mat.system-level-colors($light-theme);
+  @include mat.system-level-typography($light-theme);
+
+  @include app-theme.theme($light-theme);
+}
+
+.dark-theme {
+  @include mat.all-component-colors($dark-theme);
+
+  @include mat.typography-hierarchy($dark-theme);
+
+  @include mat.system-level-colors($dark-theme);
+  @include mat.system-level-typography($dark-theme);
+
+  @include app-theme.theme($dark-theme);
+}
+// @media (prefers-color-scheme: dark) {
+//   :root {
+//     @include mat.all-component-colors($dark-theme);
+//     @include app-theme.theme($dark-theme);
+//   }
+// }
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  // margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

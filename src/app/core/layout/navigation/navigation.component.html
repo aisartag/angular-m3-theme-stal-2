@@ -1,0 +1,41 @@
+@let isSmall = isSmall$ | async;
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="isSmall ? 'dialog' : 'navigation'"
+    [mode]="isSmall ? 'over' : 'side'"
+    [opened]="isSmall === false"
+  >
+    <mat-toolbar>Menu</mat-toolbar>
+    <app-sidebar-menu />
+  </mat-sidenav>
+  <mat-sidenav-content class="sidenav-container">
+    <mat-toolbar color="primary">
+      @if (isSmall) {
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      }
+
+      <div class="toolbar-brand">
+        <app-logo />
+      </div>
+      @if(isSmall){ }@else {
+      <div class="toolbar-actions">
+        <app-toolbar-actions />
+      </div>
+      }
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <section class="sidenav-section-content">
+      <router-outlet />
+    </section>
+  </mat-sidenav-content>
+</mat-sidenav-container>

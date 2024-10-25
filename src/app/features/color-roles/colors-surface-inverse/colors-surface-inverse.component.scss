@@ -1,0 +1,49 @@
+.grid-surface {
+  max-width: 1180px;
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, min-content);
+  grid-auto-rows: auto;
+  // row-gap: 1rem;
+
+  .surfaces {
+    // min-height: 4rem;
+    padding: 0.5rem;
+    padding-bottom: 1.5rem;
+    // border: 1px solid;
+  }
+
+  .item-surface-dim {
+    background-color: var(--sys-surface-dim);
+    color: var(--sys-on-surface-variant);
+  }
+
+  .item-surface {
+    background-color: var(--sys-surface);
+    color: var(--sys-on-surface);
+  }
+
+  .item-surface-bright {
+    background-color: var(--sys-surface-bright);
+    color: var(--sys-on-surface);
+  }
+
+  .item-inverse {
+    // border: 1px solid;
+    grid-column: 4;
+    grid-row: 1 / -1;
+  }
+
+  .item-surface-container {
+    // border: 1px solid;
+    grid-column: 1 / 4;
+    grid-row: 2;
+  }
+
+  .item-on-surface {
+    // border: 1px solid;
+    grid-column: 1 / 4;
+    grid-row: 3;
+  }
+}

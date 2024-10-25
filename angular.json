@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-m3-stal-2": {
+    "angular-m3-theme-stal-2": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -39,7 +39,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/angular-m3-stal-2",
+            "outputPath": "dist/angular-m3-theme-stal-2",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -63,8 +63,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "1MB",
+                  "maximumError": "2MB"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -77,7 +77,13 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -86,10 +92,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "angular-m3-stal-2:build:production"
+              "buildTarget": "angular-m3-theme-stal-2:build:production"
             },
             "development": {
-              "buildTarget": "angular-m3-stal-2:build:development"
+              "buildTarget": "angular-m3-theme-stal-2:build:development"
             }
           },
           "defaultConfiguration": "development"

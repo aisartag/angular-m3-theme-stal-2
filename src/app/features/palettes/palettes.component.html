@@ -1,0 +1,18 @@
+<div class="container">
+  <h3 class="mat-headline-medium title">Colori</h3>
+  <div class="colors-container">
+    @for(palette of palettes; track palette){
+    <div class="palette">
+      <p class="mat-body-small palette-label">{{ palette }}</p>
+      <div class="colors">
+        @for(hue of hues; track hue){
+        <div class="square-field">
+          <div class="square-{{ palette }}-{{ hue }} square"></div>
+          <span>{{ hue }}</span>
+        </div>
+        }
+      </div>
+    </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<button
+  mat-icon-button
+  [matMenuTriggerFor]="menu"
+  aria-label="Example icon-button with a menu"
+>
+  <mat-icon> @if(theme.isDark()){ dark_mode }@else { light_mode } </mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <button
+    mat-menu-item
+    [disabled]="theme.preferred().themeType === 'light'"
+    (click)="theme.changePreference('light')"
+  >
+    <mat-icon>light_mode</mat-icon>
+    <span>Light</span>
+  </button>
+  <button
+    mat-menu-item
+    [disabled]="theme.preferred().themeType === 'dark'"
+    (click)="theme.changePreference('dark')"
+  >
+    <mat-icon>dark_mode</mat-icon>
+    <span>Dark</span>
+  </button>
+  <button
+    mat-menu-item
+    [disabled]="theme.preferred().themeType === 'auto'"
+    (click)="theme.changePreference('auto')"
+  >
+    <mat-icon>brightness_medium</mat-icon>
+    <span>Auto</span>
+  </button>
+</mat-menu>

@@ -1,0 +1,38 @@
+.grid-surface-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: auto;
+  // row-gap: 1rem;
+
+  .surfaces-container {
+    // min-height: 4rem;
+    padding: 0.5rem;
+    padding-bottom: 1.5rem;
+    // border: 1px solid;
+  }
+
+  .item-surface-container-lowest {
+    background-color: var(--sys-surface-container-lowest);
+    color: var(--sys-on-surface);
+  }
+
+  .item-surface-container-low {
+    background-color: var(--sys-surface-container-low);
+    color: var(--sys-on-surface);
+  }
+
+  .item-surface-container {
+    background-color: var(--sys-surface-container);
+    color: var(--sys-on-surface);
+  }
+
+  .item-surface-container-high {
+    background-color: var(--sys-surface-container-high);
+    color: var(--sys-on-surface);
+  }
+
+  .item-surface-container-highest {
+    background-color: var(--sys-surface-highest);
+    color: var(--sys-on-surface);
+  }
+}

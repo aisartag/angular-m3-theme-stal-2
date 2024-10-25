@@ -1,0 +1,10 @@
+<div class="container">
+  <h1 class="title-group">Material</h1>
+  <mat-nav-list>
+    @for(link of linksMaterial; track link.path ){
+    <a mat-list-item [routerLink]="link.path"
+      ><span>{{ link.title }}</span></a
+    >
+    }
+  </mat-nav-list>
+</div>

@@ -1,0 +1,7 @@
+@use "./app/theming/carousel-theme" as carousel;
+@use "./app/features/palettes/palettes-colors" as welcome;
+
+@mixin theme($theme) {
+  @include carousel.theme($theme);
+  @include welcome.theme($theme);
+}

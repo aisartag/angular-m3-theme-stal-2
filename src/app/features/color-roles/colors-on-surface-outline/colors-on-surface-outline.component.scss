@@ -1,0 +1,29 @@
+.grid-on-surface-outline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: max-content;
+
+  .surfaces {
+    padding: 0.5rem;
+  }
+
+  .item-on-surface {
+    background-color: var(--sys-on-surface);
+    color: var(--sys-surface);
+  }
+
+  .item-on-surface-variant {
+    background-color: var(--sys-on-surface-variant);
+    color: var(--sys-surface-variant);
+  }
+
+  .item-outline {
+    background-color: var(--sys-outline);
+    color: var(--sys-surface);
+  }
+
+  .item-outline-variant {
+    background-color: var(--sys-outline-variant);
+    color: var(--sys-on-surface);
+  }
+}

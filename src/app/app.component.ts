@@ -1,13 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { APP_ENV } from './app.env';
+import { ThemingComponent } from './theming/theming.component';
+import { NavigationComponent } from './core/layout/navigation/navigation.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, ThemingComponent, NavigationComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'angular-m3-stal-2';
+  title = 'angular-m3-theme-stal-2';
+  environment = inject(APP_ENV);
+  constructor() {
+    console.log(this.environment);
+  }
 }

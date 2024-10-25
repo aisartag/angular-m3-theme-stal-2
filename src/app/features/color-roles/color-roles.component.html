@@ -1,0 +1,45 @@
+<div class="container">
+  <h3 class="mat-headline-medium title">
+    Ruolo Colori <app-color-picker class="color-picker" />
+  </h3>
+
+  <div class="grid-roles">
+    @for(groupRole of groupRoles; track groupRole.id ){
+    <div class="item-roles">
+      <div class="color">
+        @for(role of groupRole.roleColors; track role.name){
+        <div
+          class="name"
+          [style.background]="role.background"
+          [style.color]="role.color"
+        >
+          <span class="mat-body-small">
+            {{ role.name.replaceAll("-", " ") | titlecase }}</span
+          >
+        </div>
+        }
+      </div>
+      @for(role of groupRole.roleColors; track role.name){
+
+      <div
+        class="on-color"
+        [style.background]="role.color"
+        [style.color]="role.background"
+      >
+        <span class="mat-body-small"
+          >On
+          {{
+            role.name.replace("-dim", "-variant").replaceAll("-", " ")
+              | titlecase
+          }}</span
+        >
+      </div>
+      }
+    </div>
+    }
+  </div>
+
+  <div>
+    <app-colors-surface-inverse />
+  </div>
+</div>
