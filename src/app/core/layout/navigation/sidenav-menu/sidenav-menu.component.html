@@ -2,7 +2,11 @@
   <button type="button" aria-label="Undo theme" mat-icon-button>
     <mat-icon aria-label="Undo theme icon">undo</mat-icon>
   </button>
-  <app-color-picker />
+  <app-color-picker
+    [isDark]="theme.isDark()"
+    [themeSeed]="theme.currentThemeSeed"
+    (changeColor)="onChangeColor($event)"
+  />
   <button type="button" aria-label="Save theme" mat-icon-button>
     <mat-icon aria-label="Save theme icon">save</mat-icon>
   </button>

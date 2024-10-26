@@ -16,7 +16,7 @@ export class ThemeManagerComponent {
 
   constructor() {
     effect(() => {
-      console.log(this.theme.isDark());
+      console.log('ThemeManagerComponent effect:isDark', this.theme.isDark());
     });
   }
 }

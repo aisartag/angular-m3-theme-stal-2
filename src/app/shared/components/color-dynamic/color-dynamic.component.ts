@@ -15,56 +15,62 @@ import {
   themeFromSourceColor,
   applyTheme,
 } from '@material/material-color-utilities';
-import { Color } from '../../../core/services/theme-manager.service';
+import {
+  Color,
+  ThemeManager,
+} from '../../../core/services/theme-manager.service';
 import { APP_ENV } from '../../../app.env';
 
 // const FALLBACK_COLOR = '#6750a4';
-const FALLBACK_COLOR = '#ff0000';
+// const FALLBACK_COLOR = '#ff0000';
 
 @Component({
-  selector: 'app-color-picker',
+  selector: 'app-color-dynamic',
   standalone: true,
   imports: [MatButtonModule, MatIconModule],
-  templateUrl: './color-picker.component.html',
-  styleUrl: './color-picker.component.scss',
+  templateUrl: './color-dynamic.component.html',
+  styleUrl: './color-dynamic.component.scss',
 })
-export class ColorPickerComponent {
-  colorOriginal = inject(APP_ENV).themeSeed;
-  isDark = input<boolean>();
-  themeSeed = input<string>();
-  color = this.themeSeed();
-
-  changeColor = output<string>();
+export class ColorDynamicComponent {
+  theme = inject(ThemeManager);
+  colorEnvironment = inject(APP_ENV).themeSeed;
+  color = this.theme.currentThemeSeed;
 
   constructor() {
     effect(() => {
       console.log(
         'ColorPickerComponent effect:isDark themeseed ',
-
-        this.isDark()
+        this.theme.isDark()
       );
 
       this.generateDynamicTheme();
     });
   }
 
+  save() {
+    this.theme.changeThemeSeed(this.color);
+  }
+
+  undo() {
+    this.color = this.theme.currentThemeSeed;
+    this.generateDynamicTheme();
+  }
+
   changeTheme(ev: Event) {
     const inputElement = ev.target as HTMLInputElement;
 
-    if (this.color) {
-      this.color = inputElement.value;
-      this.changeColor.emit(inputElement.value);
-    }
+    this.color = inputElement.value;
+
+    this.generateDynamicTheme();
   }
 
   generateDynamicTheme() {
-    if (!this.color) return;
     let argb;
     try {
       argb = argbFromHex(this.color);
     } catch (error) {
       // falling to default color if it's invalid color
-      argb = argbFromHex(FALLBACK_COLOR);
+      argb = argbFromHex(this.colorEnvironment);
     }
 
     const targetElement = document.documentElement; // html tag
@@ -75,7 +81,7 @@ export class ColorPickerComponent {
     // Apply theme to root element
     applyTheme(theme, {
       target: targetElement,
-      dark: this.isDark(),
+      dark: this.theme.isDark(),
       brightnessSuffix: true,
     });
 

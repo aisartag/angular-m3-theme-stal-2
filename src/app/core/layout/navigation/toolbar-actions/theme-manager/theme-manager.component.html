@@ -8,24 +8,24 @@
 <mat-menu #menu="matMenu">
   <button
     mat-menu-item
-    [disabled]="theme.preferred().themeType === 'light'"
-    (click)="theme.changePreference('light')"
+    [disabled]="theme.currentThemeType() === 'light'"
+    (click)="theme.changeThemeType('light')"
   >
     <mat-icon>light_mode</mat-icon>
     <span>Light</span>
   </button>
   <button
     mat-menu-item
-    [disabled]="theme.preferred().themeType === 'dark'"
-    (click)="theme.changePreference('dark')"
+    [disabled]="theme.currentThemeType() === 'dark'"
+    (click)="theme.changeThemeType('dark')"
   >
     <mat-icon>dark_mode</mat-icon>
     <span>Dark</span>
   </button>
   <button
     mat-menu-item
-    [disabled]="theme.preferred().themeType === 'auto'"
-    (click)="theme.changePreference('auto')"
+    [disabled]="theme.currentThemeType() === 'auto'"
+    (click)="theme.changeThemeType('auto')"
   >
     <mat-icon>brightness_medium</mat-icon>
     <span>Auto</span>

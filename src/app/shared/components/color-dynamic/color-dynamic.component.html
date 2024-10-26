@@ -1,0 +1,36 @@
+<div class="container">
+  <button
+    type="button"
+    aria-label="Undo theme"
+    mat-icon-button
+    (click)="undo()"
+  >
+    <mat-icon aria-label="Undo theme icon">undo</mat-icon>
+  </button>
+
+  <div>
+    <button mat-fab extended (click)="colorPickerInput.click()">
+      <mat-icon>radio_button_checked</mat-icon>
+      {{ color }}
+    </button>
+
+    <input
+      type="color"
+      name="color-picker"
+      id="color-picker"
+      class="color-picker-input"
+      #colorPickerInput
+      [value]="color"
+      (input)="changeTheme($event)"
+    />
+  </div>
+
+  <button
+    type="button"
+    aria-label="Save theme"
+    mat-icon-button
+    (click)="save()"
+  >
+    <mat-icon aria-label="Save theme icon">save</mat-icon>
+  </button>
+</div>

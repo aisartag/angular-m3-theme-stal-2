@@ -1,7 +1,12 @@
-// src/app/shared/components/color-picker/color-picker.component.scss
-
+:host {
+  width: 100%;
+  // border: 1px solid;
+}
 .container {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   .color-picker-input {
     position: absolute;

@@ -1,11 +1,9 @@
 <div class="container">
-  <button
-    mat-icon-button
-    (click)="colorPickerInput.click()"
-    [style.color]="color"
-  >
+  <button mat-fab extended (click)="colorPickerInput.click()">
     <mat-icon>radio_button_checked</mat-icon>
+    {{ color }}
   </button>
+
   <input
     type="color"
     name="color-picker"

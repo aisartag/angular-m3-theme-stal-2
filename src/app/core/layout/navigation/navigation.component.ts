@@ -13,6 +13,7 @@ import { ToolbarActionsComponent } from './toolbar-actions/toolbar-actions.compo
 import { LogoComponent } from './logo/logo.component';
 import { SidenavActionsComponent } from './sidenav-actions/sidenav-actions.component';
 import { SidenavMenuComponent } from './sidenav-menu/sidenav-menu.component';
+import { ColorDynamicComponent } from '../../../shared/components/color-dynamic/color-dynamic.component';
 
 @Component({
   selector: 'app-navigation',
@@ -31,6 +32,7 @@ import { SidenavMenuComponent } from './sidenav-menu/sidenav-menu.component';
     LogoComponent,
     SidenavActionsComponent,
     SidenavMenuComponent,
+    ColorDynamicComponent,
   ],
 })
 export class NavigationComponent {

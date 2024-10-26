@@ -13,6 +13,11 @@ export type PreferredType = {
   themeType: PreferenceType;
 };
 
+export type Color = {
+  themeType: PreferenceType;
+  themeSeed: string;
+};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -21,18 +26,61 @@ export class ThemeManager {
   readonly #browserStorage = inject(BrowserStorage);
   readonly #window = this.#document.defaultView;
   readonly #logger = inject(LoggerService);
-  readonly #storageKey = inject(APP_ENV).name;
 
-  // signal writable
-  public preferred = signal<PreferredType>({ themeType: 'auto' });
+  readonly #appEnv = inject(APP_ENV);
+  readonly #storageKey = this.#appEnv.name;
+  readonly #themeSeedDefault = this.#appEnv.themeSeed;
 
-  // signal computed not writable
+  // signals writable
+  public currentThemeType = signal<PreferenceType>('auto');
+  public currentThemeSeed = this.#themeSeedDefault;
+
+  // signals computed not writable
   public isDark = computed(() =>
-    this.preferred().themeType === 'auto'
+    this.currentThemeType() === 'auto'
       ? this.#matchDark()
-      : this.preferred().themeType === 'dark'
+      : this.currentThemeType() === 'dark'
   );
 
+  public changeThemeType = (themeType: PreferenceType): void => {
+    this.#logger.debug('changeThemeType', themeType);
+    this.setThemeOnDocument(themeType);
+    this.currentThemeType.set(themeType);
+    this.#setStoredColor();
+  };
+
+  public changeThemeSeed = (themeSeed: string): void => {
+    this.#logger.debug('changeThemeSeed', themeSeed);
+    this.currentThemeSeed = themeSeed;
+    this.#setStoredColor();
+  };
+
+  public changeAll = (color: Color) => {
+    this.#logger.debug('changeAll', color);
+    this.currentThemeType.set(color.themeType);
+    this.currentThemeSeed = color.themeSeed;
+    this.setThemeOnDocument(color.themeType);
+  };
+
+  constructor() {
+    console.log(this.currentThemeSeed);
+    const color = this.#getColor();
+    this.#logger.debug(color);
+    this.changeAll(color);
+
+    if (this.#window !== null && this.#window.matchMedia) {
+      this.#window
+        .matchMedia('(prefers-color-scheme: dark)')
+        .addEventListener('change', () => {
+          const themeType = this.currentThemeType();
+          if (themeType !== 'light' && themeType !== 'dark') {
+            this.setThemeOnDocument(themeType);
+          }
+        });
+    }
+  }
+
+  //#region readonly  private javascript(#)
   readonly #matchDark = (): boolean => {
     if (this.#window !== null && this.#window.matchMedia) {
       return this.#window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -40,85 +88,56 @@ export class ThemeManager {
     return false;
   };
 
-  constructor() {
-    this.#setDataThemeFromPreference(this.#getPreference());
-    if (this.#window !== null && this.#window.matchMedia) {
-      this.#window
-        .matchMedia('(prefers-color-scheme: dark)')
-        .addEventListener('change', () => {
-          const storedTheme = this.#getStoredPreference();
-          if (storedTheme !== 'light' && storedTheme !== 'dark') {
-            this.#setDataThemeFromPreference(this.#getPreference());
-          }
-        });
+  readonly #getColor = (): Color => {
+    const storedColor = this.#getStoredColor();
+    this.#logger.debug('storedColor', storedColor);
+    if (storedColor) {
+      if (!Object.hasOwn(storedColor, 'themeType')) {
+        storedColor.themeType = 'auto';
+      }
+      if (!Object.hasOwn(storedColor, 'themeSeed')) {
+        storedColor.themeSeed = this.#themeSeedDefault;
+      }
+      this.#logger.debug('storedColor', storedColor);
+      return storedColor;
     }
-  }
+    return { themeType: 'auto', themeSeed: this.#themeSeedDefault };
+  };
 
-  readonly #getStoredPreference = (): any => {
+  readonly #getStoredColor = (): Color | undefined => {
     try {
       return JSON.parse(this.#browserStorage.get(this.#storageKey) ?? '{}')
-        .color.themeType;
+        .color;
     } catch (e: any) {
       return undefined;
     }
   };
 
-  readonly #setStoredPreference = (preference: PreferenceType): void => {
-    this.#logger.debug(preference);
-
-    let meta;
-    try {
-      const value = JSON.parse(
-        this.#browserStorage.get(this.#storageKey) ?? '{}'
-      );
-      if (typeof value === 'object') {
-        meta = value;
-      } else {
-        throw '';
-      }
-    } catch (e: any) {
-      meta = {};
-    }
-
-    this.#logger.debug(meta);
-
-    // change themeType preference on common localStorage
-    meta.color = { ...meta.color, themeType: preference };
-    this.#logger.debug(meta.color);
-    meta = { ...meta, color: meta.color };
-    this.#logger.debug(meta);
-    this.#browserStorage.set(this.#storageKey, JSON.stringify(meta));
+  readonly #setStoredColor = () => {
+    const color = {
+      color: {
+        themeType: this.currentThemeType(),
+        themeSeed: this.currentThemeSeed,
+      },
+    };
+    this.#logger.debug(color);
+    this.#browserStorage.set(this.#storageKey, JSON.stringify(color));
   };
 
-  readonly #getPreference = (): PreferenceType => {
-    const storedPreference = this.#getStoredPreference();
-    this.#logger.debug('getStoredPreference', storedPreference);
-    if (storedPreference) {
-      this.#logger.debug('return getStoredPreference', storedPreference);
-      return storedPreference;
-    }
-
-    return 'auto';
-  };
-
-  readonly #setDataThemeFromPreference = (preference: PreferenceType): void => {
-    this.#logger.debug('setDataThemeFromPreference', preference);
+  readonly setThemeOnDocument = (themeType: PreferenceType): void => {
+    this.#logger.debug('setThemeOnDocument', themeType);
     if (this.#window !== null) {
       if (
-        preference === 'auto' &&
+        themeType === 'auto' &&
         this.#window.matchMedia('(prefers-color-scheme: dark)').matches
       ) {
         this.#document.documentElement.setAttribute('data-pkm-theme', 'dark');
       } else {
         this.#document.documentElement.setAttribute(
           'data-pkm-theme',
-          preference
+          themeType
         );
       }
-
-      // this.preferred.set({ themeType: preference });
-      // sembra ridondante : property unica
-      this.preferred.update((t) => ({ ...t, themeType: preference }));
     }
 
     this.#setMaterialTheme();
@@ -132,10 +151,5 @@ export class ThemeManager {
       this.#document.documentElement.classList.remove('dark-theme');
     }
   };
-
-  public changePreference = (preference: PreferenceType): void => {
-    this.#logger.debug('changePreference', preference);
-    this.#setStoredPreference(preference);
-    this.#setDataThemeFromPreference(preference);
-  };
+  //#endregion
 }

@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { MatGridListModule } from '@angular/material/grid-list';
 
 import { ColorsSurfaceInverseComponent } from './colors-surface-inverse/colors-surface-inverse.component';
-import { ColorPickerComponent } from '../../shared/components/color-picker/color-picker.component';
 
 export interface RoleColor {
   name: string;
@@ -13,20 +12,13 @@ export interface RoleColor {
 
 export interface GroupRole {
   id: number;
-  // col: number;
-  // row: number;
   roleColors: RoleColor[];
 }
 
 @Component({
   selector: 'app-color-roles',
   standalone: true,
-  imports: [
-    MatGridListModule,
-    TitleCasePipe,
-    ColorsSurfaceInverseComponent,
-    ColorPickerComponent,
-  ],
+  imports: [MatGridListModule, TitleCasePipe, ColorsSurfaceInverseComponent],
   templateUrl: './color-roles.component.html',
   styleUrl: './color-roles.component.scss',
 })
