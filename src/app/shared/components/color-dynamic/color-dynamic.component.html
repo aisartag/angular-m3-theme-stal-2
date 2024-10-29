@@ -1,17 +1,15 @@
-<div class="container">
-  <button
-    type="button"
-    aria-label="Undo theme"
-    mat-icon-button
-    (click)="undo()"
-  >
+<div class="commands">
+  <button mat-icon-button aria-label="Undo theme" (click)="undo()">
     <mat-icon aria-label="Undo theme icon">undo</mat-icon>
   </button>
 
   <div>
-    <button mat-fab extended (click)="colorPickerInput.click()">
-      <mat-icon>radio_button_checked</mat-icon>
-      {{ color }}
+    <button
+      mat-stroked-button
+      (click)="colorPickerInput.click()"
+      style="border-radius: 4px"
+    >
+      <span>{{ color }}</span>
     </button>
 
     <input
@@ -25,12 +23,7 @@
     />
   </div>
 
-  <button
-    type="button"
-    aria-label="Save theme"
-    mat-icon-button
-    (click)="save()"
-  >
+  <button mat-icon-button aria-label="Save theme" (click)="save()">
     <mat-icon aria-label="Save theme icon">save</mat-icon>
   </button>
 </div>

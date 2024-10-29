@@ -1,7 +1,16 @@
 <div class="container">
-  <h1 class="title-group">Material</h1>
+  <h1 class="title-group">Dimensioni Tema</h1>
   <mat-nav-list (click)="close()">
     @for(link of linksMaterial; track link.path ){
+    <a mat-list-item [routerLink]="link.path"
+      ><span>{{ link.title }}</span></a
+    >
+    }
+  </mat-nav-list>
+
+  <h1 class="title-group">Varie</h1>
+  <mat-nav-list (click)="close()">
+    @for(link of linksMiscellaneous; track link.path ){
     <a mat-list-item [routerLink]="link.path"
       ><span>{{ link.title }}</span></a
     >

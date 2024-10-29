@@ -8,13 +8,7 @@
     [mode]="isSmall ? 'over' : 'side'"
     [opened]="isSmall === false"
   >
-    <mat-toolbar>
-      @if(!isSmall){
-
-      <app-color-dynamic />
-
-      }@else { Menu }
-    </mat-toolbar>
+    <mat-toolbar> Menu </mat-toolbar>
 
     <app-sidenav-actions (linkRouted)="closeSidenav()" />
   </mat-sidenav>
@@ -39,7 +33,10 @@
         <app-toolbar-actions />
       </div>
       }
+
+      <app-overlay-theme-change />
     </mat-toolbar>
+
     <!-- Add Content Here -->
     <section class="sidenav-section-content">
       <router-outlet />

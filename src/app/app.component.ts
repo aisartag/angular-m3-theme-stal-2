@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { APP_ENV } from './app.env';
 
 import { NavigationComponent } from './core/layout/navigation/navigation.component';
+import { LoggerService } from './core/services/logger.service';
 
 @Component({
   selector: 'app-root',
@@ -12,9 +13,11 @@ import { NavigationComponent } from './core/layout/navigation/navigation.compone
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
+  readonly #logger = inject(LoggerService);
+
   title = 'angular-m3-theme-stal-2';
   environment = inject(APP_ENV);
   constructor() {
-    console.log(this.environment);
+    this.#logger.debug(this.environment);
   }
 }

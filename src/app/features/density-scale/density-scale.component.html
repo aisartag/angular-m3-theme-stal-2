@@ -1,0 +1,43 @@
+<div class="container">
+  <h1>Personalizzazione Tipografia e Densità</h1>
+
+  <div class="buttons">
+    <button mat-button>Basic</button>
+    <button mat-raised-button>Raised</button>
+    <button mat-stroked-button>Stroked</button>
+    <button mat-flat-button>Flat</button>
+  </div>
+
+  <div class="density-xs scaled-elements">
+    <h3>Density scale: -2</h3>
+    <h4>applicata mediante la classe <code>.density-xs</code></h4>
+    <div class="buttons">
+      <button mat-button>Basic</button>
+      <button mat-raised-button>Raised</button>
+      <button mat-stroked-button>Stroked</button>
+      <button mat-flat-button>Flat</button>
+    </div>
+  </div>
+
+  <div>
+    <h3>Modifica font-size</h3>
+    <mat-form-field>
+      <mat-label>Flat Button Font Size</mat-label>
+      <input
+        type="number"
+        matInput
+        [defaultValue]="14"
+        (change)="changeFlatButtonFontSize($event)"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Heading Font Size</mat-label>
+      <input
+        type="number"
+        matInput
+        [defaultValue]="'56.992'"
+        (change)="changeHeadingFontSize($event)"
+      />
+    </mat-form-field>
+  </div>
+</div>

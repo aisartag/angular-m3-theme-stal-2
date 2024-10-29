@@ -17,7 +17,14 @@ export class SidenavActionsComponent {
   linksMaterial: RouterPathTitle[] = [
     { path: 'palettes', title: 'Mappe Colori' },
     { path: 'color-roles', title: 'Ruolo Colori' },
-    { path: 'dynamic-theme', title: 'Tema dinamico' },
+    { path: 'density-scale', title: 'Densità variabile' },
+  ];
+
+  linksMiscellaneous: RouterPathTitle[] = [
+    { path: 'buttons', title: 'Buttons' },
+    { path: 'animation-base', title: 'Animazione base' },
+    { path: 'animation-enter-leave', title: 'Animazione Enter/Leave' },
+    { path: 'animation-intro', title: 'Introduzione' },
   ];
 
   close() {

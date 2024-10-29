@@ -1,0 +1,18 @@
+:host {
+  border-left: 1px solid;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+  background-color: var(--sys-surface);
+  width: 240px;
+
+  overflow-x: hidden;
+
+  .btn-menu {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+  }
+}

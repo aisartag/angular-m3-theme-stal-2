@@ -1,0 +1,24 @@
+<h1>Introduzione animazione</h1>
+<p>
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, iusto. Eum id
+  laudantium quisquam! Soluta est hic necessitatibus minus, sapiente dolores
+  illo fugiat quis omnis quam nisi, laborum in vero molestiae fugit veritatis,
+  eius harum doloribus ab asperiores excepturi voluptates sint? Corporis autem
+  sed officiis iusto. Sequi ipsa doloremque velit quam consequatur. Ducimus
+  pariatur, fugiat nemo optio doloremque perferendis.
+</p>
+
+<div class="content">
+  <!-- Con state -->
+  <!-- <app-page-content-intro (menuClick)="menuState = 'open'" />
+  <app-page-menu-intro
+    [@openClose]="menuState"
+    (close)="menuState = 'closed'"
+  /> -->
+
+  <!-- con :enter :leave -->
+  <app-page-content-intro (menuClick)="menuOpen = true" />
+  @if(menuOpen){
+  <app-page-menu-intro @openClose (close)="menuOpen = false" />
+  }
+</div>

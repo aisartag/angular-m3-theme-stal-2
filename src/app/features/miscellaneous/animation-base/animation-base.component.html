@@ -1,0 +1,26 @@
+<div class="container">
+  <h1>Animazione base</h1>
+  <div>
+    <a mat-button href="https://angular.dev/guide/animations"
+      ><span class="mat-label-large">Introduzione</span></a
+    >
+
+    <a
+      mat-button
+      href="https://angular.dev/guide/animations/transition-and-triggers"
+      ><span class="mat-label-large">Documentazione</span></a
+    >
+  </div>
+
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae natus
+    officia cum error tempora deserunt sit quos commodi repudiandae aperiam!
+    Perferendis, officia facere! Animi in provident velit aperiam optio
+    voluptatum.
+  </p>
+
+  <div class="content-menu">
+    <app-page-content (menuClick)="menuState = 'open'" />
+    <app-page-menu [@openClose]="menuState" (close)="menuState = 'closed'" />
+  </div>
+</div>

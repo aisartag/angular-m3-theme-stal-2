@@ -2,5 +2,5 @@ import { name, version } from '../../package.json';
 export const environment = {
   name,
   version,
-  themeSeed: '#055cbb',
+  themeSeed: '#94a3b8',
 };

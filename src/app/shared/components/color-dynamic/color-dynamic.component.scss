@@ -1,8 +1,14 @@
 :host {
   width: 100%;
+  min-height: 250px;
+  padding: 1rem;
   // border: 1px solid;
+  box-shadow: var(--mat-app-elevation-shadow-level-2, none);
+  border-radius: 4px;
+  z-index: 20;
+  background-color: var(--sys-surface-container);
 }
-.container {
+.commands {
   position: relative;
   display: flex;
   align-items: center;

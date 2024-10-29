@@ -46,6 +46,7 @@ export class ThemeManager {
     this.#logger.debug('changeThemeType', themeType);
     this.setThemeOnDocument(themeType);
     this.currentThemeType.set(themeType);
+    this.#setMaterialTheme();
     this.#setStoredColor();
   };
 
@@ -60,10 +61,11 @@ export class ThemeManager {
     this.currentThemeType.set(color.themeType);
     this.currentThemeSeed = color.themeSeed;
     this.setThemeOnDocument(color.themeType);
+    this.#setMaterialTheme();
   };
 
   constructor() {
-    console.log(this.currentThemeSeed);
+    this.#logger.debug(this.currentThemeSeed);
     const color = this.#getColor();
     this.#logger.debug(color);
     this.changeAll(color);
@@ -139,8 +141,6 @@ export class ThemeManager {
         );
       }
     }
-
-    this.#setMaterialTheme();
   };
 
   readonly #setMaterialTheme = (): void => {

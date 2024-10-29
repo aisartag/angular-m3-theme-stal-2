@@ -38,11 +38,43 @@ export const routes: Routes = [
   },
 
   {
-    path: 'dynamic-theme',
+    path: 'density-scale',
     loadComponent: () =>
-      import('./features/dynamic-theme/dynamic-theme.component').then(
-        (c) => c.DynamicThemeComponent
+      import('./features/density-scale/density-scale.component').then(
+        (c) => c.DensityScaleComponent
       ),
+  },
+
+  // miscellaneous
+  {
+    path: 'buttons',
+    loadComponent: () =>
+      import('./features/miscellaneous/buttons/buttons.component').then(
+        (c) => c.ButtonsComponent
+      ),
+  },
+  {
+    path: 'animation-base',
+    loadComponent: () =>
+      import(
+        './features/miscellaneous/animation-base/animation-base.component'
+      ).then((c) => c.AnimationBaseComponent),
+  },
+
+  {
+    path: 'animation-enter-leave',
+    loadComponent: () =>
+      import(
+        './features/miscellaneous/animation-enter-leave/animation-enter-leave.component'
+      ).then((c) => c.AnimationEnterLeaveComponent),
+  },
+
+  {
+    path: 'animation-intro',
+    loadComponent: () =>
+      import(
+        './features/miscellaneous/animation-intro/animation-intro.component'
+      ).then((c) => c.AnimationIntroComponent),
   },
 
   { path: '**', component: NotFoundComponent },

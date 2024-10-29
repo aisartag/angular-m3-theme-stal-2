@@ -3,6 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { ThemeManager } from '../../../../services/theme-manager.service';
+import { LoggerService } from '../../../../services/logger.service';
 
 @Component({
   selector: 'app-theme-manager',
@@ -13,10 +14,14 @@ import { ThemeManager } from '../../../../services/theme-manager.service';
 })
 export class ThemeManagerComponent {
   theme = inject(ThemeManager);
+  readonly #logger = inject(LoggerService);
 
   constructor() {
     effect(() => {
-      console.log('ThemeManagerComponent effect:isDark', this.theme.isDark());
+      this.#logger.debug(
+        'ThemeManagerComponent effect:isDark',
+        this.theme.isDark()
+      );
     });
   }
 }

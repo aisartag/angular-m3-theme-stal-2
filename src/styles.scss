@@ -1,9 +1,10 @@
 @use "@angular/material" as mat;
+// @use "./styles/themes/default-theme" as theme;
+@use "./styles/themes/m3-theme-94a3b8" as theme;
 
-// @use "./themes/default-theme" as theme;
-@use "./themes/m3-theme-ff0000" as theme;
+@use "./styles/sizes";
 
-@use "./themes/app-theme" as app;
+@use "./styles/themes/app-theme" as app;
 
 @include mat.core();
 
@@ -21,7 +22,7 @@
 .dark-theme {
   @include mat.all-component-colors(theme.$dark-theme);
 
-  @include mat.typography-hierarchy(theme.$dark-theme);
+  // @include mat.typography-hierarchy(theme.$dark-theme);
 
   @include mat.system-level-colors(theme.$dark-theme);
   @include mat.system-level-typography(theme.$dark-theme);

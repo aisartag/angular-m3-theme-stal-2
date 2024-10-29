@@ -1,0 +1,238 @@
+client:489 [vite] connecting...
+app.component.ts:18 {name: 'angular-m3-theme-stal-2', version: '0.0.0', themeSeed: '#055cbb'}name: "angular-m3-theme-stal-2"themeSeed: "#055cbb"version: "0.0.0"[[Prototype]]: Object
+theme-manager.service.ts:66 #055cbb
+theme-manager.service.ts:93 storedColor {themeType: 'light', themeSeed: '#babd05'}
+theme-manager.service.ts:101 storedColor {themeType: 'light', themeSeed: '#babd05'}
+theme-manager.service.ts:68 {themeType: 'light', themeSeed: '#babd05'}
+theme-manager.service.ts:59 changeAll {themeType: 'light', themeSeed: '#babd05'}
+theme-manager.service.ts:128 setThemeOnDocument light
+theme-manager.service.ts:147 setMaterialTheme isDark false
+core.mjs:30069 Angular is running in development mode.
+color-dynamic.component.ts:32 ColorDynamicComponent effect:isDark themeseed  false
+color-dynamic.component.ts:80 {
+  "source": 4290428165,
+  "schemes": {
+    "light": {
+      "primary": 4284506624,
+      "onPrimary": 4294967295,
+      "primaryContainer": 4293388866,
+      "onPrimaryContainer": 4280032512,
+      "secondary": 4284506179,
+      "onSecondary": 4294967295,
+      "secondaryContainer": 4293321919,
+      "onSecondaryContainer": 4280032518,
+      "tertiary": 4282213975,
+      "onTertiary": 4294967295,
+      "tertiaryContainer": 4290768089,
+      "onTertiaryContainer": 4278198551,
+      "error": 4290386458,
+      "onError": 4294967295,
+      "errorContainer": 4294957782,
+      "onErrorContainer": 4282449922,
+      "background": 4294966271,
+      "onBackground": 4280032279,
+      "surface": 4294966271,
+      "onSurface": 4280032279,
+      "surfaceVariant": 4293321681,
+      "onSurfaceVariant": 4282926906,
+      "outline": 4286150761,
+      "outlineVariant": 4291413942,
+      "shadow": 4278190080,
+      "scrim": 4278190080,
+      "inverseSurface": 4281413931,
+      "inverseOnSurface": 4294242536,
+      "inversePrimary": 4291481123
+    },
+    "dark": {
+      "primary": 4291481123,
+      "onPrimary": 4281479680,
+      "primaryContainer": 4282927616,
+      "onPrimaryContainer": 4293388866,
+      "secondary": 4291479717,
+      "onSecondary": 4281414169,
+      "secondaryContainer": 4282927149,
+      "onSecondaryContainer": 4293321919,
+      "tertiary": 4288991422,
+      "onTertiary": 4278859562,
+      "tertiaryContainer": 4280634944,
+      "onTertiaryContainer": 4290768089,
+      "error": 4294948011,
+      "onError": 4285071365,
+      "errorContainer": 4287823882,
+      "onErrorContainer": 4294948011,
+      "background": 4280032279,
+      "onBackground": 4293321434,
+      "surface": 4280032279,
+      "onSurface": 4293321434,
+      "surfaceVariant": 4282926906,
+      "onSurfaceVariant": 4291413942,
+      "outline": 4287861122,
+      "outlineVariant": 4282926906,
+      "shadow": 4278190080,
+      "scrim": 4278190080,
+      "inverseSurface": 4293321434,
+      "inverseOnSurface": 4281413931,
+      "inversePrimary": 4284506624
+    }
+  },
+  "palettes": {
+    "primary": {
+      "hue": 112.18242760634998,
+      "chroma": 62.87587063145498,
+      "keyColor": {
+        "argb": 4290428164,
+        "internalHue": 112.1810059253436,
+        "internalChroma": 62.95682151169721,
+        "internalTone": 74.08927226245166
+      },
+      "cache": {}
+    },
+    "secondary": {
+      "hue": 112.18242760634998,
+      "chroma": 16,
+      "keyColor": {
+        "argb": 4286151002,
+        "internalHue": 112.63263678352189,
+        "internalChroma": 16.124378341926686,
+        "internalTone": 50.07066580283794
+      },
+      "cache": {}
+    },
+    "tertiary": {
+      "hue": 172.18242760634996,
+      "chroma": 24,
+      "keyColor": {
+        "argb": 4283858799,
+        "internalHue": 171.8281375524317,
+        "internalChroma": 23.6709226216608,
+        "internalTone": 49.86381888623612
+      },
+      "cache": {}
+    },
+    "neutral": {
+      "hue": 112.18242760634998,
+      "chroma": 4,
+      "keyColor": {
+        "argb": 4286150512,
+        "internalHue": 109.92288356896077,
+        "internalChroma": 3.8960624300097133,
+        "internalTone": 50.011702999512096
+      },
+      "cache": {}
+    },
+    "neutralVariant": {
+      "hue": 112.18242760634998,
+      "chroma": 8,
+      "keyColor": {
+        "argb": 4286150761,
+        "internalHue": 112.81631345925791,
+        "internalChroma": 8.149531296436516,
+        "internalTone": 50.118227131672555
+      },
+      "cache": {}
+    },
+    "error": {
+      "hue": 25,
+      "chroma": 84,
+      "keyColor": {
+        "argb": 4292753200,
+        "internalHue": 25.01013502609243,
+        "internalChroma": 84.04509263062816,
+        "internalTone": 50.06767986742766
+      },
+      "cache": {}
+    }
+  },
+  "customColors": []
+}
+color-dynamic.component.ts:92 --sys-primary
+color-dynamic.component.ts:92 --sys-on-primary
+color-dynamic.component.ts:92 --sys-primary-container
+color-dynamic.component.ts:92 --sys-on-primary-container
+color-dynamic.component.ts:92 --sys-secondary
+color-dynamic.component.ts:92 --sys-on-secondary
+color-dynamic.component.ts:92 --sys-secondary-container
+color-dynamic.component.ts:92 --sys-on-secondary-container
+color-dynamic.component.ts:92 --sys-tertiary
+color-dynamic.component.ts:92 --sys-on-tertiary
+color-dynamic.component.ts:92 --sys-tertiary-container
+color-dynamic.component.ts:92 --sys-on-tertiary-container
+color-dynamic.component.ts:92 --sys-error
+color-dynamic.component.ts:92 --sys-on-error
+color-dynamic.component.ts:92 --sys-error-container
+color-dynamic.component.ts:92 --sys-on-error-container
+color-dynamic.component.ts:92 --sys-background
+color-dynamic.component.ts:92 --sys-on-background
+color-dynamic.component.ts:92 --sys-surface
+color-dynamic.component.ts:92 --sys-on-surface
+color-dynamic.component.ts:92 --sys-surface-variant
+color-dynamic.component.ts:92 --sys-on-surface-variant
+color-dynamic.component.ts:92 --sys-outline
+color-dynamic.component.ts:92 --sys-outline-variant
+color-dynamic.component.ts:92 --sys-shadow
+color-dynamic.component.ts:92 --sys-scrim
+color-dynamic.component.ts:92 --sys-inverse-surface
+color-dynamic.component.ts:92 --sys-inverse-on-surface
+color-dynamic.component.ts:92 --sys-inverse-primary
+color-dynamic.component.ts:92 --sys-primary-dark
+color-dynamic.component.ts:92 --sys-on-primary-dark
+color-dynamic.component.ts:92 --sys-primary-container-dark
+color-dynamic.component.ts:92 --sys-on-primary-container-dark
+color-dynamic.component.ts:92 --sys-secondary-dark
+color-dynamic.component.ts:92 --sys-on-secondary-dark
+color-dynamic.component.ts:92 --sys-secondary-container-dark
+color-dynamic.component.ts:92 --sys-on-secondary-container-dark
+color-dynamic.component.ts:92 --sys-tertiary-dark
+color-dynamic.component.ts:92 --sys-on-tertiary-dark
+color-dynamic.component.ts:92 --sys-tertiary-container-dark
+color-dynamic.component.ts:92 --sys-on-tertiary-container-dark
+color-dynamic.component.ts:92 --sys-error-dark
+color-dynamic.component.ts:92 --sys-on-error-dark
+color-dynamic.component.ts:92 --sys-error-container-dark
+color-dynamic.component.ts:92 --sys-on-error-container-dark
+color-dynamic.component.ts:92 --sys-background-dark
+color-dynamic.component.ts:92 --sys-on-background-dark
+color-dynamic.component.ts:92 --sys-surface-dark
+color-dynamic.component.ts:92 --sys-on-surface-dark
+color-dynamic.component.ts:92 --sys-surface-variant-dark
+color-dynamic.component.ts:92 --sys-on-surface-variant-dark
+color-dynamic.component.ts:92 --sys-outline-dark
+color-dynamic.component.ts:92 --sys-outline-variant-dark
+color-dynamic.component.ts:92 --sys-shadow-dark
+color-dynamic.component.ts:92 --sys-scrim-dark
+color-dynamic.component.ts:92 --sys-inverse-surface-dark
+color-dynamic.component.ts:92 --sys-inverse-on-surface-dark
+color-dynamic.component.ts:92 --sys-inverse-primary-dark
+color-dynamic.component.ts:92 --sys-primary-light
+color-dynamic.component.ts:92 --sys-on-primary-light
+color-dynamic.component.ts:92 --sys-primary-container-light
+color-dynamic.component.ts:92 --sys-on-primary-container-light
+color-dynamic.component.ts:92 --sys-secondary-light
+color-dynamic.component.ts:92 --sys-on-secondary-light
+color-dynamic.component.ts:92 --sys-secondary-container-light
+color-dynamic.component.ts:92 --sys-on-secondary-container-light
+color-dynamic.component.ts:92 --sys-tertiary-light
+color-dynamic.component.ts:92 --sys-on-tertiary-light
+color-dynamic.component.ts:92 --sys-tertiary-container-light
+color-dynamic.component.ts:92 --sys-on-tertiary-container-light
+color-dynamic.component.ts:92 --sys-error-light
+color-dynamic.component.ts:92 --sys-on-error-light
+color-dynamic.component.ts:92 --sys-error-container-light
+color-dynamic.component.ts:92 --sys-on-error-container-light
+color-dynamic.component.ts:92 --sys-background-light
+color-dynamic.component.ts:92 --sys-on-background-light
+color-dynamic.component.ts:92 --sys-surface-light
+color-dynamic.component.ts:92 --sys-on-surface-light
+color-dynamic.component.ts:92 --sys-surface-variant-light
+color-dynamic.component.ts:92 --sys-on-surface-variant-light
+color-dynamic.component.ts:92 --sys-outline-light
+color-dynamic.component.ts:92 --sys-outline-variant-light
+color-dynamic.component.ts:92 --sys-shadow-light
+color-dynamic.component.ts:92 --sys-scrim-light
+color-dynamic.component.ts:92 --sys-inverse-surface-light
+color-dynamic.component.ts:92 --sys-inverse-on-surface-light
+color-dynamic.component.ts:92 --sys-inverse-primary-light
+theme-manager.component.ts:19 ThemeManagerComponent effect:isDark false
+navigation.component.ts:51 side
+client:608 [vite] connected.
+content_script_bundle.js:1 Attempting initialization Sat Oct 26 2024 08:35:49 GMT+0200 (Ora legale dell’Europa centrale)

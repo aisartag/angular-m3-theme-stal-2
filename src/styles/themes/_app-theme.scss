@@ -1,0 +1,5 @@
+@use "../../app/features/palettes/palettes-colors" as welcome;
+
+@mixin theme($theme) {
+  @include welcome.theme($theme);
+}

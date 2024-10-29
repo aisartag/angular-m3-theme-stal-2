@@ -1,0 +1,14 @@
+:host {
+  height: 100%;
+  width: 100%;
+  display: block;
+  border: 5px solid;
+  padding: 1rem;
+
+  .content {
+    margin: 4rem;
+    min-height: 300px;
+    border: 1px solid;
+    position: relative;
+  }
+}

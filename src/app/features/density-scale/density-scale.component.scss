@@ -1,0 +1,20 @@
+.container {
+  //   border: 1px solid;
+  height: 100%;
+  padding: 1rem;
+
+  .scaled-elements {
+    margin-top: 2rem;
+  }
+
+  .buttons {
+    margin-top: 1rem;
+    & > :not(:first-child) {
+      margin-left: 1rem;
+    }
+  }
+
+  .change-font-size {
+    margin-top: 2rem;
+  }
+}

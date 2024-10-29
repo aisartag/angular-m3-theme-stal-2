@@ -33,9 +33,13 @@
       // }
     }
 
+    // .content-scroll-wrapper {
+    //   overflow: auto;
+
     .sidenav-section-content {
-      // border: 1px solid;
+      border: 3px solid blue;
       overflow: auto;
+      // overflow-x: hidden;
 
       @media (pointer: fine) {
         // &::-webkit-scrollbar {
@@ -49,8 +53,9 @@
         scrollbar-width: thin;
         // scrollbar-color: thumb track;
         // scrollbar-color: red orange;
-        scrollbar-color: transparent transparent;
+        scrollbar-color: red red; //transparent transparent
       }
     }
+    // }
   }
 }

@@ -1,5 +1,5 @@
 import { Component, effect, inject, viewChild } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { AsyncPipe } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -12,8 +12,10 @@ import { RouterOutlet } from '@angular/router';
 import { ToolbarActionsComponent } from './toolbar-actions/toolbar-actions.component';
 import { LogoComponent } from './logo/logo.component';
 import { SidenavActionsComponent } from './sidenav-actions/sidenav-actions.component';
-import { SidenavMenuComponent } from './sidenav-menu/sidenav-menu.component';
+
 import { ColorDynamicComponent } from '../../../shared/components/color-dynamic/color-dynamic.component';
+import { LoggerService } from '../../services/logger.service';
+import { OverlayThemeChangeComponent } from '../../../shared/components/overlay-theme-change/overlay-theme-change.component';
 
 @Component({
   selector: 'app-navigation',
@@ -31,12 +33,13 @@ import { ColorDynamicComponent } from '../../../shared/components/color-dynamic/
     ToolbarActionsComponent,
     LogoComponent,
     SidenavActionsComponent,
-    SidenavMenuComponent,
     ColorDynamicComponent,
+    OverlayThemeChangeComponent,
   ],
 })
 export class NavigationComponent {
   readonly #breakpointObserver = inject(BreakpointObserver);
+  readonly #logger = inject(LoggerService);
 
   drawer = viewChild.required(MatSidenav);
 
@@ -49,7 +52,7 @@ export class NavigationComponent {
 
   constructor() {
     effect(() => {
-      console.log(this.drawer().mode);
+      this.#logger.debug(this.drawer().mode);
     });
   }
 

@@ -1,0 +1,21 @@
+:host {
+  width: 240px;
+  border: 1px solid;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+  background-color: var(--sys-surface-container);
+  padding: 1rem;
+  isolation: isolate;
+  max-height: fit-content;
+  transition: 0.15s ease-in translate;
+  overflow: hidden;
+
+  .btn-menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
