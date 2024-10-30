@@ -3,11 +3,12 @@ import { Component, output } from '@angular/core';
 import { RouterPathTitle } from '../../../../types/router-link';
 import { MatListModule } from '@angular/material/list';
 import { RouterLink } from '@angular/router';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
   selector: 'app-sidenav-actions',
   standalone: true,
-  imports: [MatListModule, RouterLink],
+  imports: [MatListModule, RouterLink, MatExpansionModule],
   templateUrl: './sidenav-actions.component.html',
   styleUrl: './sidenav-actions.component.scss',
 })
@@ -21,10 +22,7 @@ export class SidenavActionsComponent {
     { path: 'customs', title: 'Personalizzazioni' },
   ];
 
-  linksMiscellaneous: RouterPathTitle[] = [
-    { path: 'buttons', title: 'Buttons' },
-    { path: 'animation-base', title: 'Animazione base' },
-    { path: 'animation-enter-leave', title: 'Animazione Enter/Leave' },
+  linksAnimation: RouterPathTitle[] = [
     { path: 'animation-intro', title: 'Introduzione' },
   ];
 

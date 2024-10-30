@@ -1,5 +1,6 @@
 <button
   mat-icon-button
+  matTooltip="Modifica tema"
   [matMenuTriggerFor]="menu"
   aria-label="Example icon-button with a menu"
 >
@@ -27,7 +28,7 @@
     [disabled]="theme.favoriteTheme() === 'auto'"
     (click)="theme.changeTheme('auto')"
   >
-    <mat-icon>brightness_medium</mat-icon>
+    <mat-icon>computer</mat-icon>
     <span>System</span>
   </button>
 </mat-menu>

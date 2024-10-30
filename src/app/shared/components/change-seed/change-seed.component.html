@@ -1,11 +1,13 @@
 <button
-  class="btn-toggle"
+  matTooltip="Generatore colori"
   (click)="isOpen = !isOpen; isOpen ? _startAnimation() : _resetAnimation()"
   mat-icon-button
   cdkOverlayOrigin
   #trigger="cdkOverlayOrigin"
 >
-  <mat-icon>radio_button_checked</mat-icon>
+  <mat-icon
+    ><span class="material-symbols-outlined">potted_plant</span></mat-icon
+  >
 </button>
 
 <!-- This template displays the overlay content and is connected to the button -->

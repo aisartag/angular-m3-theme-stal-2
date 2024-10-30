@@ -13,6 +13,7 @@ import {
   themeFromSourceColor,
 } from '@material/material-color-utilities';
 import { APP_ENV } from '../../../app.env';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-change-seed',
@@ -22,6 +23,7 @@ import { APP_ENV } from '../../../app.env';
     MatButtonModule,
     MatIconModule,
     GenerateColorsComponent,
+    MatTooltipModule,
   ],
   templateUrl: './change-seed.component.html',
   styleUrl: './change-seed.component.scss',
