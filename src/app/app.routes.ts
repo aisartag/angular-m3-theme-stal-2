@@ -45,6 +45,14 @@ export const routes: Routes = [
       ),
   },
 
+  {
+    path: 'customs',
+    loadComponent: () =>
+      import('./features/customs/customs.component').then(
+        (c) => c.CustomsComponent
+      ),
+  },
+
   // miscellaneous
   {
     path: 'buttons',

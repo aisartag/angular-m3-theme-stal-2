@@ -9,7 +9,7 @@
       (click)="colorPickerInput.click()"
       style="border-radius: 4px"
     >
-      <span>{{ color }}</span>
+      <span>{{ color() }}</span>
     </button>
 
     <input
@@ -18,7 +18,7 @@
       id="color-picker"
       class="color-picker-input"
       #colorPickerInput
-      [value]="color"
+      [value]="color()"
       (input)="changeTheme($event)"
     />
   </div>

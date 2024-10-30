@@ -1,0 +1,24 @@
+/**
+********************TEMI PERSONALIZZATI************
+E' possibile definire temi usando proprie o predefinite palettes
+Qui è usata la coppia di material 3 - light rose/red
+1. definire la classe che usa rali temi 
+2. @include nella classe i componenti interessati
+In questo esempio button e spinner con class .custom-theme
+
+*/
+@use "@angular/material" as mat;
+
+$custom-theme: mat.define-theme(
+  (
+    color: (
+      primary: mat.$rose-palette,
+      tertiary: mat.$red-palette,
+    ),
+  )
+);
+
+.custom-theme {
+  @include mat.button-color($custom-theme);
+  @include mat.progress-spinner-color($custom-theme);
+}

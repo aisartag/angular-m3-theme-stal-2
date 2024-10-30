@@ -13,9 +13,8 @@ import { ToolbarActionsComponent } from './toolbar-actions/toolbar-actions.compo
 import { LogoComponent } from './logo/logo.component';
 import { SidenavActionsComponent } from './sidenav-actions/sidenav-actions.component';
 
-import { ColorDynamicComponent } from '../../../shared/components/color-dynamic/color-dynamic.component';
 import { LoggerService } from '../../services/logger.service';
-import { OverlayThemeChangeComponent } from '../../../shared/components/overlay-theme-change/overlay-theme-change.component';
+import { ChangeSeedComponent } from '../../../shared/components/change-seed/change-seed.component';
 
 @Component({
   selector: 'app-navigation',
@@ -33,8 +32,7 @@ import { OverlayThemeChangeComponent } from '../../../shared/components/overlay-
     ToolbarActionsComponent,
     LogoComponent,
     SidenavActionsComponent,
-    ColorDynamicComponent,
-    OverlayThemeChangeComponent,
+    ChangeSeedComponent,
   ],
 })
 export class NavigationComponent {

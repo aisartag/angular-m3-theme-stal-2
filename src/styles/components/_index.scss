@@ -3,3 +3,7 @@
 @mixin theme($theme) {
   @include welcome.theme($theme);
 }
+
+@mixin color($theme) {
+  @include welcome.color($theme);
+}

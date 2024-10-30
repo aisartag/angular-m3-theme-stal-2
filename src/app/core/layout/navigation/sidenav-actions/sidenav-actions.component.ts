@@ -18,6 +18,7 @@ export class SidenavActionsComponent {
     { path: 'palettes', title: 'Mappe Colori' },
     { path: 'color-roles', title: 'Ruolo Colori' },
     { path: 'density-scale', title: 'Densità variabile' },
+    { path: 'customs', title: 'Personalizzazioni' },
   ];
 
   linksMiscellaneous: RouterPathTitle[] = [

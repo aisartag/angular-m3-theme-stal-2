@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ToolbarMenuComponent } from '../toolbar-menu/toolbar-menu.component';
-import { ThemeManagerComponent } from './theme-manager/theme-manager.component';
+import { ThemeManagerComponent } from '../../../../shared/components/theme-manager/theme-manager.component';
 
 @Component({
   selector: 'app-toolbar-actions',

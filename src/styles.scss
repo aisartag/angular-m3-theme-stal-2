@@ -1,40 +1,41 @@
 @use "@angular/material" as mat;
 // @use "./styles/themes/default-theme" as theme;
-@use "./styles/themes/m3-theme-94a3b8" as theme;
+@use "./styles/themes/m3-theme-94a3b8" as themes;
+
+// themi personalizzati
+@use "./styles/themes/custom-theme";
 
 @use "./styles/sizes";
 
-@use "./styles/themes/app-theme" as app;
+// stili sui componenti
+@use "./styles/components";
 
 @include mat.core();
 
 :root {
-  @include mat.all-component-themes(theme.$light-theme);
+  @include mat.all-component-themes(themes.$light-theme);
+  @include components.theme(themes.$light-theme);
 
-  @include mat.typography-hierarchy(theme.$light-theme);
+  @include mat.typography-hierarchy(themes.$light-theme);
 
-  @include mat.system-level-colors(theme.$light-theme);
-  @include mat.system-level-typography(theme.$light-theme);
-
-  @include app.theme(theme.$light-theme);
+  @include mat.system-level-colors(themes.$light-theme);
+  @include mat.system-level-typography(themes.$light-theme);
 }
 
 .dark-theme {
-  @include mat.all-component-colors(theme.$dark-theme);
+  @include mat.all-component-colors(themes.$dark-theme);
+  @include components.color(themes.$dark-theme);
 
-  // @include mat.typography-hierarchy(theme.$dark-theme);
-
-  @include mat.system-level-colors(theme.$dark-theme);
-  @include mat.system-level-typography(theme.$dark-theme);
-
-  @include app.theme(theme.$dark-theme);
+  @include mat.system-level-colors(themes.$dark-theme);
+  @include mat.system-level-typography(themes.$dark-theme);
 }
+
+// ********************* Sostituisci a .dark-theme per replica statica light/dark del sistema
 // @media (prefers-color-scheme: dark) {
 //   :root {
-//     @include mat.all-component-colors(theme.$dark-theme);
-//     @include app-theme.theme(theme.$dark-theme);
+//     .............................
 //   }
-// }
+// }****************************************************************************************
 
 * {
   margin: 0;
@@ -54,4 +55,39 @@ body {
 body {
   // margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+// Personalizzaione forma pulsanti
+.button-rounded {
+  --border-radius: 16px;
+  --mdc-text-button-container-shape: var(--border-radius);
+  --mdc-protected-button-container-shape: var(--border-radius);
+  --mdc-outlined-button-container-shape: var(--border-radius);
+  --mdc-filled-button-container-shape: var(--border-radius);
+}
+
+// Personalizzazione pulsanti usando overrides API
+.overrides-example {
+  button {
+    @include mat.button-overrides(
+      (
+        container-color: #00ff00,
+        container-height: 64px,
+        container-shape: 32px,
+        label-text-color: orange,
+        ripple-color: #ff0000,
+        outline-color: #0000ff,
+      )
+    );
+  }
+}
+
+// Adding color variants to the button using button-color API
+// Primary is the default color variant, so we don't need to specify it
+$color-variants: (secondary, tertiary);
+
+@each $variant in $color-variants {
+  .mat-#{$variant} {
+    @include mat.button-color(themes.$light-theme, $color-variant: $variant);
+  }
 }
