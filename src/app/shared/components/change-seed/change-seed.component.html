@@ -15,6 +15,8 @@
   [cdkConnectedOverlayOpen]="isOpen"
   (overlayOutsideClick)="isOpen = false; $event.stopPropagation()"
   [cdkConnectedOverlayHasBackdrop]="false"
+  minHeight="400px"
+  minWidth="500px"
 >
   <app-generate-colors
     class="mat-elevation-z2"
