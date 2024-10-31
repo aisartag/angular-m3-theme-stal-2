@@ -19,11 +19,11 @@ export class ThemeManager {
 
   readonly #appEnv = inject(APP_ENV);
   readonly #storageKey = this.#appEnv.name;
-  readonly #seedDefault = this.#appEnv.themeSeed;
+  readonly seedDefault = this.#appEnv.themeSeed;
 
   // signals writable
   public favoriteTheme = signal<ThemeType>('auto');
-  #seed = this.#seedDefault;
+  #seed = this.seedDefault;
   public getSeed() {
     return this.#seed;
   }
@@ -54,7 +54,7 @@ export class ThemeManager {
     this.#setTheme(this.#getPreferredTheme());
     this.#seed = this.#getPreferredSeed();
 
-    this.#logger.debug('seedDefault', this.#seedDefault);
+    this.#logger.debug('seedDefault', this.seedDefault);
     this.#logger.debug('seed', this.#seed);
 
     if (this.#window !== null && this.#window.matchMedia) {
@@ -105,7 +105,7 @@ export class ThemeManager {
     if (storedSeed) {
       return storedSeed;
     }
-    return this.#seedDefault;
+    return this.seedDefault;
   };
 
   readonly #getStoredSeed = (): string | undefined => {
@@ -116,7 +116,7 @@ export class ThemeManager {
       return undefined;
     }
 
-    return this.#seedDefault;
+    return this.seedDefault;
   };
 
   readonly #setStoredSeed = (seed: string) => {

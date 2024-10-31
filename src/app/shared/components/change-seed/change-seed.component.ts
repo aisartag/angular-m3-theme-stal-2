@@ -31,7 +31,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 })
 export class ChangeSeedComponent {
   readonly theme = inject(ThemeManager);
-  colorEnvironment = inject(APP_ENV).themeSeed;
+  // colorEnvironment = inject(APP_ENV).themeSeed;
   currentColor!: string | null;
 
   constructor() {
@@ -55,12 +55,17 @@ export class ChangeSeedComponent {
     this.generateDynamicTheme(color, this.theme.isDark());
   }
 
-  saveColor(color: string) {
+  save(color: string) {
     this.theme.changSeed(color);
     this.currentColor = null;
   }
 
   reset() {
+    // console.log('reset color theme.seed', this.colorEnvironment);
+    this.currentColor = this.theme.seedDefault;
+  }
+
+  undo() {
     console.log('reset color theme.seed', this.theme.getSeed());
     this.currentColor = null;
   }
@@ -72,7 +77,7 @@ export class ChangeSeedComponent {
     } catch (error) {
       // falling to default color if it's invalid color
       console.log('+++++++++++++++++++++++++++++++++++', error);
-      argb = argbFromHex(this.colorEnvironment);
+      argb = argbFromHex(this.theme.seedDefault);
     }
 
     const targetElement = document.documentElement; // html tag

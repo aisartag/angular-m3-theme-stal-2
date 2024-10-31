@@ -3,24 +3,27 @@ import {
   Component,
   effect,
   ElementRef,
-  inject,
   input,
   output,
   viewChild,
 } from '@angular/core';
-import {
-  applyTheme,
-  argbFromHex,
-  themeFromSourceColor,
-} from '@material/material-color-utilities';
-import { APP_ENV } from '../../../app.env';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-generate-colors',
   standalone: true,
-  imports: [MatButtonModule, MatIconModule],
+  imports: [
+    MatButtonModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTooltipModule,
+  ],
   templateUrl: './generate-colors.component.html',
   styleUrl: './generate-colors.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -29,8 +32,9 @@ export class GenerateColorsComponent {
   picker = viewChild<ElementRef<HTMLInputElement>>('colorPickerInput');
   color = input.required<string>();
   changeColor = output<string>();
+  undo = output<void>();
   reset = output<void>();
-  saveColor = output<string>();
+  save = output<string>();
 
   constructor() {
     effect(() => {
@@ -46,14 +50,18 @@ export class GenerateColorsComponent {
     this.changeColor.emit(inputElement.value);
   }
 
-  undo() {
+  onUndo() {
+    this.undo.emit();
+  }
+
+  onReset() {
     this.reset.emit();
   }
 
-  save() {
+  onSave() {
     const value = this.picker()?.nativeElement.value;
     if (value) {
-      this.saveColor.emit(value);
+      this.save.emit(value);
     }
   }
 }

@@ -1,29 +1,56 @@
 <div class="commands">
-  <button mat-icon-button aria-label="Undo theme" (click)="undo()">
+  <button
+    mat-icon-button
+    aria-label="Undo theme"
+    matTooltip="Ripristina precedente"
+    (click)="onUndo()"
+  >
     <mat-icon aria-label="Undo theme icon">undo</mat-icon>
   </button>
 
-  <div>
-    <button
-      mat-stroked-button
-      (click)="colorPickerInput.click()"
-      style="border-radius: 4px"
-    >
-      <span>{{ color() }}</span>
-    </button>
+  <button
+    mat-icon-button
+    aria-label="Original theme"
+    matTooltip="Ripristina originale"
+    (click)="onReset()"
+  >
+    <mat-icon aria-label="Reset theme icon">
+      <span class="material-symbols-outlined">reset_settings</span>
+    </mat-icon>
+  </button>
 
-    <input
-      type="color"
-      name="color-picker"
-      id="color-picker"
-      class="color-picker-input"
-      #colorPickerInput
-      [value]="color()"
-      (input)="changeTheme($event)"
-    />
-  </div>
-
-  <button mat-icon-button aria-label="Save theme" (click)="save()">
+  <button
+    mat-icon-button
+    aria-label="Save theme"
+    matTooltip="Salva generatore"
+    (click)="onSave()"
+  >
     <mat-icon aria-label="Save theme icon">save</mat-icon>
   </button>
+</div>
+
+<div class="container-seed">
+  <button class="color-btn" (click)="colorPickerInput.click()">
+    <span
+      class="color-seed mat-elevation-z2"
+      [style.backgroundColor]="color()"
+    ></span>
+  </button>
+  <mat-form-field appearance="outline" class="field-seed">
+    <mat-label>Colore esadecimale</mat-label>
+    <input matInput [value]="color()" readonly />
+    <button mat-icon-button matSuffix>
+      <mat-icon>tune</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <input
+    type="color"
+    name="color-picker"
+    id="color-picker"
+    class="color-picker-input"
+    #colorPickerInput
+    [value]="color()"
+    (input)="changeTheme($event)"
+  />
 </div>

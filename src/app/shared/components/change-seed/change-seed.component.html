@@ -17,6 +17,8 @@
   [cdkConnectedOverlayOpen]="isOpen"
   (overlayOutsideClick)="isOpen = false; $event.stopPropagation()"
   [cdkConnectedOverlayHasBackdrop]="false"
+  cdkConnectedOverlayMinHeight="200px"
+  cdkConnectedOverlayMinWidth="400px"
 >
   <app-generate-colors
     class="mat-elevation-z2"
@@ -26,6 +28,7 @@
     [color]="getCurrentColor()"
     (changeColor)="colorChanged($event)"
     (reset)="reset()"
-    (saveColor)="saveColor($event)"
+    (save)="save($event)"
+    (undo)="undo()"
   />
 </ng-template>
