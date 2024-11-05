@@ -14,7 +14,7 @@ import { LogoComponent } from './logo/logo.component';
 import { SidenavActionsComponent } from './sidenav-actions/sidenav-actions.component';
 
 import { LoggerService } from '../../services/logger.service';
-import { ChangeSeedComponent } from '../../../shared/components/change-seed/change-seed.component';
+import { SeedManagerComponent } from '../../../shared/components/seed-manager/seed-manager.component';
 
 @Component({
   selector: 'app-navigation',
@@ -32,7 +32,7 @@ import { ChangeSeedComponent } from '../../../shared/components/change-seed/chan
     ToolbarActionsComponent,
     LogoComponent,
     SidenavActionsComponent,
-    ChangeSeedComponent,
+    SeedManagerComponent,
   ],
 })
 export class NavigationComponent {

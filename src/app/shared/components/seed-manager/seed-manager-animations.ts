@@ -7,10 +7,10 @@ import {
   trigger,
 } from '@angular/animations';
 
-export const chageSeedAnimations: {
-  readonly transformChangeSeed: AnimationTriggerMetadata;
+export const seedManagerAnimations: {
+  readonly transformSeedManager: AnimationTriggerMetadata;
 } = {
-  transformChangeSeed: trigger('transformChangeSeed', [
+  transformSeedManager: trigger('transformSeedManager', [
     state('void', style({ opacity: 0, transform: 'scale(0.8)' })),
     transition(
       'void => enter',

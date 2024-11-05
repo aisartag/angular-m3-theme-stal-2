@@ -23,10 +23,6 @@ export class ThemeManager {
 
   // signals writable
   public favoriteTheme = signal<ThemeType>('auto');
-  #seed = this.seedDefault;
-  public getSeed() {
-    return this.#seed;
-  }
 
   // signal computed not writable
   public isDark = computed(() =>
@@ -44,18 +40,9 @@ export class ThemeManager {
     this.#setStoredTheme(theme);
   };
 
-  public changSeed = (seed: string): void => {
-    this.#logger.debug('changeThemeSeed', seed);
-    this.#seed = seed;
-    this.#setStoredSeed(seed);
-  };
-
   constructor() {
     this.#setTheme(this.#getPreferredTheme());
-    this.#seed = this.#getPreferredSeed();
-
     this.#logger.debug('seedDefault', this.seedDefault);
-    this.#logger.debug('seed', this.#seed);
 
     if (this.#window !== null && this.#window.matchMedia) {
       this.#window
@@ -100,46 +87,7 @@ export class ThemeManager {
     this.#browserStorage.set(this.#storageKey, JSON.stringify(meta));
   };
 
-  readonly #getPreferredSeed = (): string => {
-    const storedSeed = this.#getStoredSeed();
-    if (storedSeed) {
-      return storedSeed;
-    }
-    return this.seedDefault;
-  };
-
-  readonly #getStoredSeed = (): string | undefined => {
-    try {
-      return JSON.parse(this.#browserStorage.get(this.#storageKey) ?? '{}')
-        .seed;
-    } catch (e: any) {
-      return undefined;
-    }
-
-    return this.seedDefault;
-  };
-
-  readonly #setStoredSeed = (seed: string) => {
-    const meta = JSON.parse(this.#browserStorage.get(this.#storageKey) ?? '{}');
-    meta.seed = seed;
-    this.#browserStorage.set(this.#storageKey, JSON.stringify(meta));
-  };
-
   readonly #setTheme = (theme: ThemeType): void => {
-    // if (this.#window !== null && this.#window.matchMedia) {
-
-    //     theme === 'auto' &&
-    //     this.#window.matchMedia('(prefers-color-scheme: dark)').matches
-    //   ) {
-    //     console.log('setTheme auto dark', true);
-    //     this._isDarkSub.next(true);
-    //   } else {
-    //     console.log('setTheme no auto isdark', theme === 'dark');
-    //     this._isDarkSub.next(theme === 'dark');
-    //   }
-    //   this.#setMaterialTheme();
-    // }
-
     this.favoriteTheme.set(theme);
     if (this.isDark()) {
       this.#document.documentElement.classList.add('dark-theme');
@@ -147,17 +95,6 @@ export class ThemeManager {
       this.#document.documentElement.classList.remove('dark-theme');
     }
   };
-
-  // readonly #setMaterialTheme = () => {
-  //   this.isDark$.pipe(take(1)).subscribe((isDark) => {
-  //     console.log('setMaterialTheme isdark', isDark);
-  //     if (isDark) {
-  //       this.#document.documentElement.classList.add('dark-theme');
-  //     } else {
-  //       this.#document.documentElement.classList.remove('dark-theme');
-  //     }
-  //   });
-  // };
 
   //#endregion
 }

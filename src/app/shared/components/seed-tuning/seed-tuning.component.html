@@ -1,0 +1,223 @@
+<div class="container">
+  <div class="header">
+    <!-- <h6>Generatore colori</h6> -->
+    <button
+      type="button"
+      mat-icon-button
+      aria-label="Close"
+      matTooltip="Chiusura"
+      (click)="onClose()"
+    >
+      <mat-icon aria-label="Close icon">close</mat-icon>
+    </button>
+  </div>
+  <form #seedForm="ngForm">
+    <div class="container-color-seed">
+      <button class="color-btn" (click)="colorPickerInput.click()">
+        <span
+          class="color-seed mat-elevation-z2"
+          [style.backgroundColor]="hexValue"
+        ></span>
+      </button>
+      <mat-form-field appearance="outline" class="field-color-seed">
+        <mat-label>Colore Generatore</mat-label>
+        <input
+          type="text"
+          matInput
+          [ngModel]="hexValue"
+          name="hex"
+          id="hex"
+          required
+          #hex="ngModel"
+          (ngModelChange)="changedHex($event)"
+          appHexColorValidate="^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+        />
+        <button
+          mat-icon-button
+          type="button"
+          matSuffix
+          matTooltip="Toggle tuning HCT"
+          (click)="toggleHtcVisible()"
+        >
+          <mat-icon>tune</mat-icon>
+        </button>
+
+        <!-- {{ hex.errors | json }} -->
+        @if(hex.errors && (hex.dirty || hex.touched)){
+        @if(hex.errors['required']){
+        <mat-error>Colore generatore <strong>obbligatorio</strong></mat-error>
+        } @if(hex.errors['hexColorError']){
+        <mat-error>Colore generatore <strong>errato</strong></mat-error>
+        } }
+      </mat-form-field>
+      <button
+        type="button"
+        mat-icon-button
+        aria-label="Close"
+        matTooltip="Colore random"
+        (click)="onRandomColor()"
+      >
+        <mat-icon class="material-symbols-outlined" aria-label="Seed random"
+          >shuffle</mat-icon
+        >
+      </button>
+
+      <input
+        type="color"
+        name="color-picker"
+        id="color-picker"
+        class="color-picker-input"
+        #colorPickerInput
+        [value]="hexValue"
+        (input)="changedHex(colorPickerInput.value)"
+      />
+    </div>
+
+    @if(isHtcVisible){
+    <!-- hue  -->
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Tonalità</mat-label>
+      <input
+        type="number"
+        matInput
+        name="hue"
+        id="hue"
+        required
+        #hue="ngModel"
+        [ngModel]="htcValues.hue"
+        (ngModelChange)="changedHue($event)"
+      />
+      <mat-slider
+        min="0"
+        max="360"
+        step="1"
+        showTickMarks
+        discrete
+        class="full-whidth"
+      >
+        <input
+          matSliderThumb
+          name="hueSlider"
+          [value]="htcValues.hue"
+          (valueChange)="changedSliderHue(hueSlider.value)"
+          #hueSlider
+        />
+      </mat-slider>
+
+      @if(hue.errors && (hue.dirty || hue.touched)){
+      @if(hue.errors['required']){
+      <mat-error>Tonalità <strong>obbligatoria</strong></mat-error>
+      } }
+    </mat-form-field>
+
+    <!-- chroma  -->
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Cromaticità</mat-label>
+      <input
+        type="number"
+        matInput
+        name="chroma"
+        id="chroma"
+        required
+        #chroma="ngModel"
+        [ngModel]="htcValues.chroma"
+        (ngModelChange)="changedChroma($event)"
+      />
+      <mat-slider
+        min="0"
+        max="150"
+        step="1"
+        showTickMarks
+        discrete
+        class="full-whidth"
+      >
+        <input
+          matSliderThumb
+          name="chromaSlider"
+          [value]="htcValues.chroma"
+          (valueChange)="changedSliderChroma(chromaSlider.value)"
+          #chromaSlider
+        />
+      </mat-slider>
+      @if(chroma.errors && (chroma.dirty || chroma.touched)){
+      @if(chroma.errors['required']){
+      <mat-error>Cromaticità <strong>obbligatoria</strong></mat-error>
+      } }
+    </mat-form-field>
+
+    <!-- tone  -->
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Tono</mat-label>
+      <input
+        type="number"
+        matInput
+        name="tone"
+        id="tone"
+        required
+        #tone="ngModel"
+        [ngModel]="htcValues.tone"
+        (ngModelChange)="changedTone($event)"
+      />
+
+      <mat-slider
+        min="0"
+        max="100"
+        step="1"
+        showTickMarks
+        discrete
+        class="full-whidth"
+      >
+        <input
+          matSliderThumb
+          name="toneSlider"
+          [value]="htcValues.tone"
+          (valueChange)="changedSliderTone(toneSlider.value)"
+          #toneSlider
+        />
+      </mat-slider>
+
+      @if(tone.errors && (tone.dirty || tone.touched)){
+      @if(tone.errors['required']){
+      <mat-error>Tono <strong>obbligatorio</strong></mat-error>
+      } }
+    </mat-form-field>
+    }
+
+    <div class="commands">
+      <button
+        type="button"
+        mat-icon-button
+        aria-label="Undo seed"
+        matTooltip="Ripristina precedente"
+        (click)="onUndo()"
+        [disabled]="hexValue === seed.seedColor()"
+      >
+        <mat-icon aria-label="Undo theme icon">undo</mat-icon>
+      </button>
+
+      <button
+        type="button"
+        mat-icon-button
+        aria-label="Original seed"
+        matTooltip="Ripristina originale"
+        (click)="onReset()"
+        [disabled]="hexValue === seed.seedDefault"
+      >
+        <mat-icon aria-label="Reset seed icon">
+          <span class="material-symbols-outlined">reset_settings</span>
+        </mat-icon>
+      </button>
+
+      <button
+        type="button"
+        mat-icon-button
+        aria-label="Save theme"
+        matTooltip="Salva generatore"
+        (click)="onSave()"
+        [disabled]="hexValue === seed.seedColor()"
+      >
+        <mat-icon aria-label="Save theme icon">save</mat-icon>
+      </button>
+    </div>
+  </form>
+</div>

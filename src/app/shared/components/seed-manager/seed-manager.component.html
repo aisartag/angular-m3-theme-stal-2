@@ -15,20 +15,16 @@
   cdkConnectedOverlay
   [cdkConnectedOverlayOrigin]="trigger"
   [cdkConnectedOverlayOpen]="isOpen"
-  (overlayOutsideClick)="isOpen = false; $event.stopPropagation()"
   [cdkConnectedOverlayHasBackdrop]="false"
   cdkConnectedOverlayMinHeight="200px"
-  cdkConnectedOverlayMinWidth="400px"
+  cdkConnectedOverlayWidth="400px"
 >
-  <app-generate-colors
+  <app-seed-tuning
     class="mat-elevation-z2"
-    [@transformChangeSeed]="_panelAnimationState"
-    (@transformChangeSeed.start)="_onAnimationStart($event)"
-    (@transformChangeSeed.done)="_onAnimationDone($event)"
-    [color]="getCurrentColor()"
-    (changeColor)="colorChanged($event)"
-    (reset)="reset()"
-    (save)="save($event)"
-    (undo)="undo()"
+    [@transformSeedManager]="_panelAnimationState"
+    (@transformSeedManager.start)="_onAnimationStart($event)"
+    (@transformSeedManager.done)="_onAnimationDone($event)"
+    (close)="isOpen = false"
   />
 </ng-template>
+<!--  (overlayOutsideClick)="isOpen = false; $event.stopPropagation()" -->
