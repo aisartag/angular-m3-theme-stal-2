@@ -1,7 +1,9 @@
-<div class="container">
-  <mat-nav-list>
-    @for (link of links; track link) {
-    <a mat-list-item [routerLink]="link.routerLink">{{ link.title }}</a>
-    }
-  </mat-nav-list>
+<div class="container" [style.flex-direction]="vertical() ? 'column' : 'row'">
+  <!-- <mat-nav-list> -->
+  @for (link of links; track link) {
+  <a mat-button [routerLink]="link.routerLink" (click)="close.emit()">{{
+    link.title
+  }}</a>
+  }
+  <!-- </mat-nav-list> -->
 </div>

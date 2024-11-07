@@ -1,25 +1,26 @@
-:host {
-  // border: 1px solid #777;
-  flex: 1 1 0%;
-  text-align: center;
-}
+// :host {
+//   // display: block;
+//   border: 1px solid blue;
+//   // flex: 1 1;
+//   text-align: center;
+// }
 
 // .container {
 //   // border: 1px solid #777;
 // }
 
-svg {
-  opacity: 0.8;
-  padding: 2px;
-}
+// svg {
+//   opacity: 0.8;
+//   padding: 2px;
+// }
 
-a {
-  display: inline-block;
-  color: blue;
-}
+// a {
+//   display: inline-block;
+//   color: blue;
+// }
 
-@media (min-width: "768px") {
-  :host {
-    text-align: start;
-  }
-}
+// @media (min-width: "768px") {
+//   :host {
+//     text-align: start;
+//   }
+// }

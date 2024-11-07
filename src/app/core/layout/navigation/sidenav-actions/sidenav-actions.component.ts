@@ -16,10 +16,11 @@ export class SidenavActionsComponent {
   linkRouted = output();
 
   linksMaterial: RouterPathTitle[] = [
-    { path: 'palettes', title: 'Mappe Colori' },
+    { path: 'palettes', title: 'Colori (Palettes)' },
     { path: 'color-roles', title: 'Ruolo Colori' },
-    { path: 'density-scale', title: 'Densità variabile' },
+    { path: 'density-scale', title: 'Density' },
     { path: 'customs', title: 'Personalizzazioni' },
+    { path: 'buttons', title: 'Pulsanti (Buttons)' },
   ];
 
   linksAnimation: RouterPathTitle[] = [

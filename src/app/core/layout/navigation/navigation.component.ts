@@ -15,6 +15,7 @@ import { SidenavActionsComponent } from './sidenav-actions/sidenav-actions.compo
 
 import { LoggerService } from '../../services/logger.service';
 import { SeedManagerComponent } from '../../../shared/components/seed-manager/seed-manager.component';
+import { RightOverlayComponent } from './right-overlay/right-overlay.component';
 
 @Component({
   selector: 'app-navigation',
@@ -33,6 +34,7 @@ import { SeedManagerComponent } from '../../../shared/components/seed-manager/se
     LogoComponent,
     SidenavActionsComponent,
     SeedManagerComponent,
+    RightOverlayComponent,
   ],
 })
 export class NavigationComponent {

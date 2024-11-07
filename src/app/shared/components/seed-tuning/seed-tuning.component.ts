@@ -19,7 +19,7 @@ import {
 import { JsonPipe } from '@angular/common';
 import { HexColorValidatorDirective } from '../../directives/hexcolor-validator.directive';
 import { MatIconModule } from '@angular/material/icon';
-import { SeedManagerService } from '../../../core/services/seed-manager.service';
+import { SeedManager } from '../../../core/services/seed-manager.service';
 import { LoggerService } from '../../../core/services/logger.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
@@ -47,7 +47,7 @@ export interface HtcValues {
   styleUrl: './seed-tuning.component.scss',
 })
 export class SeedTuningComponent {
-  readonly seed = inject(SeedManagerService);
+  readonly seed = inject(SeedManager);
   readonly #logger = inject(LoggerService);
 
   close = output<void>();

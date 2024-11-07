@@ -1,0 +1,48 @@
+.container {
+  height: 100%;
+  max-width: 640px;
+  // border: 1px solid;
+  padding: 1rem;
+  section {
+    // border: 1px solid;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 1rem;
+    margin: 0 auto;
+
+    @media (min-width: 599px) {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .label {
+      // border: 1px solid;
+
+      font-size: 14px;
+      margin-left: 8px;
+      min-width: 120px;
+    }
+
+    .button-row {
+      // border: 1px solid;
+      max-width: 600px;
+    }
+
+    .button-row .mat-mdc-button-base {
+      margin: 8px 8px 8px 0;
+    }
+
+    .flex-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      .button-container {
+        display: flex;
+        justify-content: center;
+        width: 120px;
+      }
+    }
+  }
+}

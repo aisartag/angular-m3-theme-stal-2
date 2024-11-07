@@ -1,5 +1,5 @@
 @let isSmall = isSmall$ | async;
-<mat-sidenav-container class="sidenav-container">
+<mat-sidenav-container class="container">
   <mat-sidenav
     #drawer
     class="sidenav"
@@ -8,37 +8,45 @@
     [mode]="isSmall ? 'over' : 'side'"
     [opened]="isSmall === false"
   >
-    <mat-toolbar> Menu </mat-toolbar>
+    <mat-toolbar class="toolbar-sidenav"> Menu </mat-toolbar>
 
     <app-sidenav-actions (linkRouted)="closeSidenav()" />
   </mat-sidenav>
-  <mat-sidenav-content class="sidenav-container">
-    <mat-toolbar color="primary">
-      @if (isSmall) {
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-      >
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      }
+  <mat-sidenav-content class="sidenav-content">
+    <mat-toolbar class="toolbar-content">
+      <div class="toolbar-left">
+        @if (isSmall) {
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+        >
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        }
 
-      <div class="toolbar-brand">
-        <app-logo />
+        <div class="toolbar-brand">
+          <app-logo class="logo" />
+        </div>
       </div>
-      @if(isSmall){ }@else {
-      <div class="toolbar-actions">
-        <app-toolbar-actions />
-      </div>
-      }
 
-      <app-seed-manager />
+      <div class="toolbar-right">
+        @if(!isSmall){
+        <div class="toolbar-actions">
+          <app-toolbar-actions />
+        </div>
+        }
+        <app-seed-manager />
+
+        @if(isSmall){
+        <app-right-overlay />
+        }
+      </div>
     </mat-toolbar>
 
     <!-- Add Content Here -->
-    <section class="sidenav-section-content">
+    <section class="section-sidenav-content">
       <router-outlet />
     </section>
   </mat-sidenav-content>

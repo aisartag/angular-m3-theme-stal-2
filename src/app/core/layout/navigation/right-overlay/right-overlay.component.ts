@@ -1,30 +1,28 @@
 import { OverlayModule } from '@angular/cdk/overlay';
 import { Component } from '@angular/core';
-
-import { overAnimations } from '../../animations/over-animations';
-import { Subject } from 'rxjs';
-import { AnimationEvent } from '@angular/animations';
-
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { SeedTuningComponent } from '../seed-tuning/seed-tuning.component';
+import { Subject } from 'rxjs';
+import { overAnimations } from '../../../../shared/animations/over-animations';
+import { RightActionsComponent } from '../right-actions/right-actions.component';
+import { AnimationEvent } from '@angular/animations';
 
 @Component({
-  selector: 'app-seed-manager',
+  selector: 'app-right-overlay',
   standalone: true,
   imports: [
-    OverlayModule,
     MatButtonModule,
     MatIconModule,
     MatTooltipModule,
-    SeedTuningComponent,
+    OverlayModule,
+    RightActionsComponent,
   ],
-  templateUrl: './seed-manager.component.html',
-  styleUrl: './seed-manager.component.scss',
+  templateUrl: './right-overlay.component.html',
+  styleUrl: './right-overlay.component.scss',
   animations: [overAnimations.transformOver],
 })
-export class SeedManagerComponent {
+export class RightOverlayComponent {
   isOpen = false;
   #isAnimating!: boolean;
 

@@ -1,0 +1,34 @@
+:host {
+  // border: 1px solid;
+  display: block;
+  width: 100%;
+  padding-block: 0.5rem;
+  padding-inline: 1rem;
+  background-color: var(--sys-surface-container);
+  color: var(--sys-on-background);
+  border-radius: 4px;
+
+  position: relative;
+
+  .btn-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+  }
+
+  .list-menu {
+    margin-bottom: 1rem;
+  }
+
+  .theme-select {
+    margin-top: 2rem;
+    width: 100%;
+
+    .select-trigger {
+      // border: 1px solid;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+  }
+}

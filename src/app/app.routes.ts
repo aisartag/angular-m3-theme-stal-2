@@ -14,6 +14,14 @@ export const routes: Routes = [
   },
 
   {
+    path: 'register',
+    loadComponent: () =>
+      import('./core/auth/pages/register/register.component').then(
+        (c) => c.RegisterComponent
+      ),
+  },
+
+  {
     path: 'dashboard',
     loadComponent: () =>
       import('./features/dashboard/dashboard.component').then(
@@ -53,8 +61,15 @@ export const routes: Routes = [
       ),
   },
 
-  // miscellaneous
+  {
+    path: 'buttons',
+    loadComponent: () =>
+      import('./features/buttons/buttons.component').then(
+        (c) => c.ButtonsComponent
+      ),
+  },
 
+  // animazionr
   {
     path: 'animation-intro',
     loadComponent: () =>

@@ -4,9 +4,8 @@ import { BrowserStorage } from './browser-storage.service';
 
 import { LoggerService } from './logger.service';
 import { APP_ENV } from '../../app.env';
-import { BehaviorSubject, take } from 'rxjs';
 
-export type ThemeType = 'light' | 'dark' | 'auto';
+export type ThemeType = 'light' | 'dark' | 'system';
 
 @Injectable({
   providedIn: 'root',
@@ -19,20 +18,16 @@ export class ThemeManager {
 
   readonly #appEnv = inject(APP_ENV);
   readonly #storageKey = this.#appEnv.name;
-  readonly seedDefault = this.#appEnv.themeSeed;
 
   // signals writable
-  public favoriteTheme = signal<ThemeType>('auto');
+  public favoriteTheme = signal<ThemeType>('system');
 
   // signal computed not writable
   public isDark = computed(() =>
-    this.favoriteTheme() === 'auto'
+    this.favoriteTheme() === 'system'
       ? this.#matchDark()
       : this.favoriteTheme() === 'dark'
   );
-
-  // private _isDarkSub = new BehaviorSubject(false);
-  // isDark$ = this._isDarkSub.asObservable();
 
   public changeTheme = (theme: ThemeType): void => {
     this.#logger.debug('changeTheme', theme);
@@ -42,7 +37,6 @@ export class ThemeManager {
 
   constructor() {
     this.#setTheme(this.#getPreferredTheme());
-    this.#logger.debug('seedDefault', this.seedDefault);
 
     if (this.#window !== null && this.#window.matchMedia) {
       this.#window
@@ -50,7 +44,7 @@ export class ThemeManager {
         .addEventListener('change', () => {
           const theme = this.#getStoredTheme();
           if (theme !== 'light' && theme !== 'dark') {
-            this.#setTheme(theme ?? 'auto');
+            this.#setTheme(theme ?? 'system');
           }
         });
     }
@@ -69,7 +63,7 @@ export class ThemeManager {
     if (storedTheme) {
       return storedTheme;
     }
-    return 'auto';
+    return 'system';
   };
 
   readonly #getStoredTheme = (): ThemeType | undefined => {

@@ -1,25 +1,24 @@
 <button
-  matTooltip="Colore sorgente"
-  (click)="isOpen = !isOpen; isOpen ? _startAnimation() : _resetAnimation()"
+  matTooltip="Azioni"
   mat-icon-button
   cdkOverlayOrigin
-  #trigger="cdkOverlayOrigin"
+  #trigger1="cdkOverlayOrigin"
+  (click)="isOpen = !isOpen; isOpen ? _startAnimation() : _resetAnimation()"
 >
-  <mat-icon
-    ><span class="material-symbols-outlined">potted_plant</span></mat-icon
-  >
+  <mat-icon><span>more_vert</span></mat-icon>
 </button>
 
 <!-- This template displays the overlay content and is connected to the button -->
 <ng-template
   cdkConnectedOverlay
-  [cdkConnectedOverlayOrigin]="trigger"
+  [cdkConnectedOverlayOrigin]="trigger1"
   [cdkConnectedOverlayOpen]="isOpen"
-  [cdkConnectedOverlayHasBackdrop]="false"
+  [cdkConnectedOverlayHasBackdrop]="true"
+  (overlayOutsideClick)="isOpen = false; $event.stopPropagation()"
   cdkConnectedOverlayMinHeight="200px"
-  cdkConnectedOverlayWidth="400px"
+  cdkConnectedOverlayWidth="200px"
 >
-  <app-seed-tuning
+  <app-right-actions
     class="mat-elevation-z2"
     [@transformOver]="_panelAnimationState"
     (@transformOver.start)="_onAnimationStart($event)"

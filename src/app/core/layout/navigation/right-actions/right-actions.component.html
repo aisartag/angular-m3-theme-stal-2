@@ -1,0 +1,31 @@
+<button mat-icon-button class="btn-close" (click)="close.emit()">
+  <mat-icon>close</mat-icon>
+</button>
+
+<div class="list-menu">
+  <app-toolbar-menu [vertical]="true" (close)="close.emit()" />
+</div>
+
+<mat-divider />
+
+<mat-form-field appearance="outline" class="theme-select">
+  <mat-label>Cambio Tema</mat-label>
+  <mat-select
+    #select
+    [value]="theme.favoriteTheme()"
+    (selectionChange)="theme.changeTheme(select.value)"
+  >
+    <mat-select-trigger class="select-trigger">
+      <mat-icon>{{ theme.isDark() ? "dark_mode" : "light_mode" }}</mat-icon>
+      <span [style.font-weight]="500">{{ select.value | titlecase }}</span>
+    </mat-select-trigger>
+    @for (themeView of themeViews; track themeView.value) {
+    <mat-option [value]="themeView.value"
+      ><mat-icon>{{ themeView.icon }}</mat-icon
+      >{{ themeView.value | titlecase }}</mat-option
+    >
+    }
+  </mat-select>
+</mat-form-field>
+
+<!-- (selectionChange)="onSelectionChange(select.value)" -->

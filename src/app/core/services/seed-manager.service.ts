@@ -21,7 +21,7 @@ export interface HtcValues {
 @Injectable({
   providedIn: 'root',
 })
-export class SeedManagerService {
+export class SeedManager {
   readonly #document = inject(DOCUMENT);
   readonly #browserStorage = inject(BrowserStorage);
   readonly #logger = inject(LoggerService);

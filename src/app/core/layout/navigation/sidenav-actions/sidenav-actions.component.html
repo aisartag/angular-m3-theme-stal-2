@@ -1,10 +1,10 @@
 <div class="container">
-  <mat-accordion multi displayMode="default">
-    <mat-expansion-panel>
+  <mat-accordion multi displayMode="flat">
+    <mat-expansion-panel expanded="true">
       <mat-expansion-panel-header>
         <mat-panel-title> Dimensioni Tema </mat-panel-title>
       </mat-expansion-panel-header>
-      <mat-nav-list (click)="close()">
+      <mat-nav-list (click)="close()" class="density-xxs">
         @for(link of linksMaterial; track link.path ){
         <a mat-list-item [routerLink]="link.path"
           ><span>{{ link.title }}</span></a
@@ -12,11 +12,15 @@
         }
       </mat-nav-list>
     </mat-expansion-panel>
-    <mat-expansion-panel>
+    <mat-expansion-panel expanded="true">
       <mat-expansion-panel-header>
         <mat-panel-title> Animazione </mat-panel-title>
       </mat-expansion-panel-header>
-      <mat-nav-list (click)="close()">
+      <mat-nav-list
+        (click)="close()"
+        class="density-xxs"
+        style="padding-top: 0"
+      >
         @for(link of linksAnimation; track link.path ){
         <a mat-list-item [routerLink]="link.path"
           ><span>{{ link.title }}</span></a
